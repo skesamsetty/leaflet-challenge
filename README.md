@@ -1,6 +1,6 @@
 # leaflet-challenge
 
-As part of the learning exercise, I have considered the Earthquake data for past 7 days from United States Geological Survey (USGS). For reference the map provides, Earthquakes' Magniture, Depth and the location. 
+As part of the learning exercise, I have considered the Earthquake data for past 7 days from United States Geological Survey (USGS). For reference, the map provides Earthquakes' Magniture, Depth and the location. 
 
 Using the MapBox (<https://www.mapbox.com/>) maps for views like Satellite, Grayscale and Outdoors, we can see the earthquakes around the world.
 
