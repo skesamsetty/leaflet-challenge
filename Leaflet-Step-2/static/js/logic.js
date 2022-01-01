@@ -15,7 +15,15 @@ d3.json(queryURL).then((data) => {
         console.log(`Earthquake Data:`);
         console.log(earthquakeData);
 
-        var tectonicLayer = L.geoJSON(tectonicPlates);
+        var tectonicLayer = L.geoJSON(tectonicPlates, {
+            style: function(feature) {
+                    return {
+                    weight: 2,
+                    color: "white",
+                    fillOpacity: 0
+                    };
+                }
+            });
         console.log('Techtonic Plate Coordinates');
         console.log(tectonicLayer);
 

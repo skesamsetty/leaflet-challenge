@@ -67,7 +67,7 @@ d3.json(queryURL).then((data) => {
             return {
               color: "white",
               fillColor: markerColorByDepth(feature.geometry.coordinates[2]),
-              fillOpacity: 0.5,
+              fillOpacity: 0.75,
               weight: 1.5,
               radius: markerSizeByMagnitude(feature.properties.mag)
             };
