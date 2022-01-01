@@ -13,8 +13,6 @@ d3.json(queryURL).then((data) => {
 
     // Pointing the center of map to the first geometry coordinates of earthquake data
     var mapCenter = [data.features[0].geometry.coordinates[1], data.features[0].geometry.coordinates[0]];
-    console.log(`Map Center Coordinates: ${mapCenter}`)
-    console.log(`Map Center Place: ${data.features[0].properties.place}`)
 
     //  Create base layers
     var satelliteMap = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -35,14 +33,6 @@ d3.json(queryURL).then((data) => {
         accessToken: API_KEY
     });
     
-    var outdoorMap = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox/outdoors-v11',
-        tileSize: 512,
-        zoomOffset: -1,
-        accessToken: API_KEY
-    });
 
     // Function to pick marker color based on the depth of the earthquake
     function markerColorByDepth(depth) {
@@ -92,19 +82,16 @@ d3.json(queryURL).then((data) => {
     // Define a baseMaps object to hold our base layers 
     var baseMaps = {
         "Satellite": satelliteMap,
-        "Grayscale": grayscaleMap,
-        "Outdoors": outdoorMap
+        "Grayscale": grayscaleMap
     };
 
     // Create Overlay object to hold our overlay layer
     var overlayMaps = {
-        // "Tectonic Plates": tectonicLayer,
         "Earthquakes": earthquakeLayer
     };
 
     // Create our map, giving it the satellite map and earthquake layers to display on load
     var myMap = L.map("map", {
-        // center: [34.052235, -118.243683],
         // center: mapCenter,
         center: [31.7917, 7.0926],
         zoom: 3,
@@ -113,7 +100,8 @@ d3.json(queryURL).then((data) => {
 
     // Create Legend Control
     var labels = ['-10-10', '10-30', '30-50', '50-70', '70-90', '90+'];
-    var colors = ['orangered', 'darkorange', 'orange', 'gold', 'greenyellow', 'lawngreen'];
+    // var labels = ['-10', '10', '30', '50', '70', '90+'];
+    var colors = ['lawngreen','greenyellow','gold','orange','darkorange','orangered'  ];
 
     var legend = L.control({position: 'bottomright'});
 
@@ -126,8 +114,8 @@ d3.json(queryURL).then((data) => {
                 div.innerHTML += 
                    '<i style="background:' + colors[i] + '"></i> ' + labels[i] + '<br>';
             }
-        console.log(div);
-        console.log(div.innerHTML);
+        // console.log(div);
+        // console.log(div.innerHTML);
 
         return div;
     }; 
